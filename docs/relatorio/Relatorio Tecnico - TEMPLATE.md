@@ -132,8 +132,10 @@
 
 ## Personas, Empatia e Proposta de Valor
 
-......  COLOQUE AQUI O SEU TEXTO ......
+**Persona 1:**
 
+- [Persona 1](images/personaLuiza.png)
+-[Proposta de valor Persona1](images/propostaDeValorLuiza.png)
 
 > Relacione as personas identificadas no seu projeto, os respectivos mapas de empatia e 
 > mapas da proposta de valor. Lembre-se que você deve ser enumerar e descrever precisamente 
