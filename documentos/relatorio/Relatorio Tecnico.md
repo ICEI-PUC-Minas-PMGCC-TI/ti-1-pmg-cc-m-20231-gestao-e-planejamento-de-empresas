@@ -8,15 +8,11 @@ EstoqueMaster
 Ciência da Computação - PUC Minas COREU
 
 ## Participantes
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua a lista dos membros da equipe com seus nomes completos.
->
-> Os membros do grupo são: 
-> - Fulano da Silva
-> - Ciclano Albuquerque
-
+Túlio Gomes Braga
+Gabriel Glatz Campos
+Ricardo Soares Pereira da Gama Cerqueira
+Iago de Lara Cotta Ponteio
+Julia Roque Pinheiro
 # Estrutura do Documento
 
 - [Informações do Projeto](#informações-do-projeto)
@@ -53,74 +49,32 @@ Ciência da Computação - PUC Minas COREU
 
 
 # Introdução
+Com a evolução constante do mercado, uma organização eficiente se tornou indubitavelmente um dos maiores requisitos para o sucesso de um empreendimento, independente da área. Ter boa gestão pode ser a diferença que fará um cliente escolher um produto em relação ao concorrente. Dessa forma, garantir uma boa estrutura é de suma importância ao gerir um negócio.
+
+Em anos recentes, alcançar estabilidade financeira se tornou um desafio para grande parcela da população. Por isso, muitas pessoas viram oportunidade de renda ao abrir a própria pequena empresa, suprindo as necessidades da sua localidade, vendendo comida, equipamento para diversas atividades, medicamentos, roupas, entre muitos outros. O pequeno negócio alcançou marcas históricas no Brasil em 2021, quando mais de 4 milhões de MEIs (Microempreendedores Individuais) foram registrados, um aumento de mais de 50% se comparado a apenas 3 anos antes, de acordo com um levantamento feito pelo SEBRAE, baseado em dados da Receita Federal. Ademais, grande parte dos novos empreendedores não possuem o devido conhecimento e tempo para instituir as medidas apropriadas e crescer no mercado.
+
+Frente a isso, soluções eficientes para a organização e gerenciamento dos diversos aspectos de um negócio são essenciais para que o empreendedor possa crescer no mercado da melhor maneira possível.
 
 ## Problema
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Nesse momento você deve apresentar o problema que a sua aplicação deve
-> resolver. No entanto, não é a hora de comentar sobre a aplicação.
-> Descreva também o contexto em que essa aplicação será usada, se
-> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
-> fato existir, pois ainda não é a hora de apresentar requisitos
-> detalhados ou projetos.
->
-> Nesse momento, o grupo pode optar por fazer uso
-> de ferramentas como Design Thinking, que permite um olhar de ponta a
-> ponta para o problema.
->
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Conforme exposto, há grande carência de soluções para a dificuldade de organização, principalmente em pequenas empresas. Dessa forma, esse projeto busca sanar uma grande parte dessa problemática: o estoque, seja em relação ao armazenamento, categorização ou a precificação.
 
 ## Objetivos
+O objetivo geral deste trabalho é a criação de uma aplicação web que apresenta ferramentas práticas e intuitivas para o gerenciamento do estoque de um empreendimento, a fim de agilizar e melhorar o seu funcionamento.
 
-......  COLOQUE AQUI O SEU TEXTO ......
+De modo específico, são notáveis:
 
-> Aqui você deve descrever os objetivos do trabalho indicando que o
-> objetivo geral é desenvolver um software para solucionar o problema
-> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
-> específicos dependendo de onde você vai querer concentrar a sua
-> prática investigativa, ou como você vai aprofundar no seu trabalho.
-> 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Categorização dos produtos em diversos filtros e total liberdade;
+Controle de saída e entrada de produtos;
+Notificar quando um produto precisa ser reabastecido, para evitar que falte.
+Notificar produtos prestes a vencer, para evitar desperdícios.
 
 ## Justificativa
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
-> 
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
-
+	De acordo com uma pesquisa do IBGE (Instituto Brasileiro de Geografia e Estatística), 60% das empresas vão à falência nos primeiros 5 anos. Destas, 29% são de MEIs (Microempreendedores Individuais) e 21% são microempresas. Esse grupo é o mais suscetível à falência já que, normalmente, não possuem o conhecimento ou capital adequado para realizar investimentos e gerir de forma eficaz.
 ## Público-Alvo
+Existe uma enorme variedade de empresas que podem se beneficiar de uma boa gestão de estoque. Entretanto, o foco deste trabalho são os donos de pequenos negócios com interesse em crescer no mercado e atender seus clientes da melhor forma possível.
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
-> 
-> **Links Úteis**:
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Logo, o público alvo escolhido foram adultos donos de comércios locais, especialmente MEIs e microempresas, que não possuem capital para contratar grande quantidade de funcionários ou serviços responsáveis pela organização ideal de seus produtos.
  
 # Especificações do Projeto
 
