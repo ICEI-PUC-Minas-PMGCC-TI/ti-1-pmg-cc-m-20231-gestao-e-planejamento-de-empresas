@@ -124,11 +124,7 @@ Ciência da Computação - PUC Minas COREU
  
 # Especificações do Projeto
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente uma visão geral do que será abordado nesta parte do
-> documento, enumerando as técnicas e/ou ferramentas utilizadas para
-> realizar a especificações do projeto
+A definição exata do problema e os pontos mais relevantes a serem tratados neste projeto foi consolidada com a participação dos usuários em um trabalho de imersão, feito pelos membros da equipe a partir da observação dos usuários em seu local natural e por meio de entrevistas. Os detalhes levantados nesse processo foram consolidados na forma de personas e histórias de usuários.
 
 ## Personas, Empatia e Proposta de Valor
 
@@ -142,8 +138,9 @@ Ciência da Computação - PUC Minas COREU
 ![Proposta de valor Persona2](images/propostaDeValorJoao.png)
 
 **Persona 3:**
+
 ![Persona 3](images/personaAna.png)
-![Proposta de valor Persona3](images/propostaDeValor.png)
+![Proposta de valor Persona3](images/propostaDeValorAna.png)
 
 
 ## Histórias de Usuários
@@ -152,19 +149,15 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Luiza Matos         | Visualizar com maior organização os produtos de sua loja       | poder entender melhor o que tem/está em falta em sua loja|
+|Luiza Matos         | Visualizar com maior organização os produtos de sua loja       | Poder entender melhor o que tem/está em falta em sua loja|
 |Luiza Matos         | Visualizar uma pequena imagem do item| Controle de quais roupas ela está visualizando, pois não consegue lembrar todas por nome |
-
-> Apresente aqui as histórias de usuário que são relevantes para o
-> projeto de sua solução. As Histórias de Usuário consistem em uma
-> ferramenta poderosa para a compreensão e elicitação dos requisitos
-> funcionais e não funcionais da sua aplicação. Se possível, agrupe as
-> histórias de usuário por contexto, para facilitar consultas
-> recorrentes à essa parte do documento.
->
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+|Luiza Matos         | Organizar itens por meio de preço | Verificar quais itens de roupa irão lhe custar mais na hora dos pedidos |
+|João Gomes | Poder selecionar um estoque mínimo para cada item | Poder ver quando um produto está chegando ao fim |
+|João Gomes | Poder visualizar de forma filtrada seus itens, seja por categorias ou outras condições | Maior organização e entendimento de seus itens |
+|João Gomes | Visualizar quanto os produtos irão lhe custar | Organização financeira na hora dos pedidos |
+|Ana Souza | Poder usar o web app tanto no computador quanto no celular | Possui maior facilidade com o uso de celular |
+|Ana Souza | Selecionar mais de um item ao mesmo tempo para fazer edições/excluí-los | Otimização de seu tempo na hora da edição de preços e itens |
+|Ana Souza | Poder entender intuitivamente a função dos componentes do site, e poder visualizar de maneira fácil seus itens | Possui dificuldade com a utilização do computador |
 
 ## Requisitos
 
@@ -174,38 +167,34 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| O site deve apresentar uma visualização de todos os itens em estoque, assim como sua quantidade disponível | ALTA | 
+|RF-002| O site deve apresentar uma landing page que explique o produto ao usuário.   | BAIXA |
+|RF-003| O site deve apresentar separação por categorias e nobreza do produto. | MÉDIA |
+|RF-004| O site deve apresentar a possibilidade de adicionar, excluir e editar produtos. | ALTA |
+|RF-005| O site deve avisar quando um produto está chegando perto de seu estoque mínimo ou já o atingiu. | ALTA |
+|RF-006| O site deve produzir um relatório, quando solicitado, de todos os produtos em falta. | MÉDIA |
+|RF-007| O site deve apresentar a possibilidade de selecionar mais de um produto. | BAIXA |
+|RF-008| Deve ser exibido, junto ao item, uma imagem do mesmo. | BAIXA-MÉDIA |
+|RF-009| O site deve disponibilizar o contato para suporte caso necessário. | BAIXA |
+|RF-010| O site deve apresentar filtros de pesquisa para permitir que o usuário faça pesquisas específicas. | MÉDIA |
+
+
 
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-> Com base nas Histórias de Usuário, enumere os requisitos da sua
-> solução. Classifique esses requisitos em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na
->   plataforma (ex: cadastro de usuário).
->
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade,
->   desempenho, confiabilidade, segurança ou outro (ex: suporte a
->   dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma
-> característica alvo da sua solução. Além disso, certifique-se de que
-> todos os aspectos capturados nas Histórias de Usuário foram cobertos.
-> 
-> **Links Úteis**:
-> 
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
+|RNF-001| O site deve ser publicado em um ambiente acessível publicamente na Internet (Repl.it, GitHub Pages, Heroku) | ALTA | 
+|RNF-002| O site deverá ser responsivo permitindo a visualização em um celular de forma adequada | ALTA | 
+|RNF-003| O site deve ter bom nível de contraste entre os elementos da tela em conformidade | MÉDIA |
+|RNF-004| O site deve apresentar uma interface amigável e intuitiva, com fácil usabilidade. | ALTA |
+|RNF-005| O site deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge) | ALTA |
+|RNF-006| O sistema deve apresentar segurança em relação às informações do usuário. | ALTA |
+|RNF-007| O site deve apresentar uma documentação com instruções de uso. | ALTA |
+|RNF-008| O site deve apresentar uma boa performance quando lidando com um alto número de itens. | MÉDIA |
+|RNF-009| O site deve ser feito para que a manutenção dele seja fácil. | MÉDIA |
+|RNF-010| O site deve apresentar boa confiabilidade. | BAIXA |
 
 ## Restrições
 
@@ -213,17 +202,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-
-> Enumere as restrições à sua solução. Lembre-se de que as restrições
-> geralmente limitam a solução candidata.
-> 
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
+|01| O projeto deverá ser entregue no final do semestre letivo, não podendo extrapolar a data de 07/07/2020. |
+|02| O aplicativo deve se restringir às tecnologias básicas da Web no Frontend      |
+|03| A equipe não pode subcontratar o desenvolvimento do trabalho. |
 
 # Projeto de Interface
 
