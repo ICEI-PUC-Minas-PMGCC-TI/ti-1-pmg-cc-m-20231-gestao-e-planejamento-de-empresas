@@ -226,12 +226,12 @@ O quadro kanban do grupo no Trello está disponível através da URL: https://tr
 
 ## Divisão de Papéis
 
-Scrum Master: Ricardo Soares Cerqueira
-Project Owner: Gabriel Glatz Campos
-Equipe de Desenvolvimento: 
-- Tulio Gomes Braga
-- Julia Pinheiro Roque
-- Iago de Lara Cotta
+> Scrum Master: Ricardo Soares Cerqueira
+> Project Owner: Gabriel Glatz Campos
+> Equipe de Desenvolvimento: 
+> - Tulio Gomes Braga
+> - Julia Pinheiro Roque
+> - Iago de Lara Cotta
 
 
 ## Ferramentas
