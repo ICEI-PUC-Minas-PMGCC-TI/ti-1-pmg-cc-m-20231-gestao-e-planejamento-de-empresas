@@ -13,7 +13,7 @@ Projeto focado no controle de estoque para facilitar a organização de empresas
 ## Professores responsáveis
 
 * Ilo Amy Saldanha Rivero
-* Nome completo do professor 2
+* Leonardo Vilela
 
 ## Instruções de utilização
 
