@@ -189,24 +189,17 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 
 ## Wireframes
+**Colocar aqui o wireframe**
 
-......  INCLUA AQUI OS WIREFRAMES DAS TELAS DA APLICAÇÃO COM UM BREVE DESCRITIVO ......
-
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a
-> estrutura de um site web e seu relacionamentos entre suas
-> páginas. Um wireframe web é uma ilustração semelhante ao
-> layout de elementos fundamentais na interface.
-> 
-> **Links Úteis**:
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> 
-> **Exemplo**:
-> 
 > ![Exemplo de Wireframe](images/wireframe-example.png)
 
+## Protótipo
+
+Protótipo do nosso site já funcionando os botões clicáveis
+
+<a href="https://www.figma.com/file/Z0AH83iB9Inc9CJAaYNyzM/Prototipo-TIFE?node-id=0-1&t=KpDpRdNgHwbrRl7h-0">
+  <img src="https://raw.githubusercontent.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-gestao-e-planejamento-de-empresas/master/docs/relatorio/images/fotoPrototipo.png"/>
+</a><br>
 
 # Metodologia
 
