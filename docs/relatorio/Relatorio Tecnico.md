@@ -189,9 +189,12 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 
 ## Wireframes
-**Colocar aqui o wireframe**
 
-> ![Exemplo de Wireframe](images/wireframe-example.png)
+Wireframe do nosso site já funcionando os botões clicáveis como fluxo do site
+
+<a href="https://www.figma.com/file/0FqMENsMKP9dn9WXEysFDt/Wireframe-TIFE?node-id=0-1&t=yJV9XdLEBhPsUA56-0">
+  <img src="https://raw.githubusercontent.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-gestao-e-planejamento-de-empresas/master/docs/relatorio/images/wireframes.jpg"/>
+</a>
 
 ## Protótipo
 
