@@ -175,5 +175,26 @@ function indexDoProdutoPorId(produtos, id){
     return -1;
 }
 
+function selecionarTodos() {
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    checkboxes.forEach(checkbox => checkbox.checked = true);
+}
 
+function deselecionarTodos() {
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+}
+
+const btnSelecionarTodos = document.querySelector('#btn-selecionar-todos');
+
+//Se o botão é clicado uma vez, seleciona todos os checkboxes e se é clicado de novo, deseleciona todos:
+btnSelecionarTodos.addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    const todosSelecionados = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    if (todosSelecionados) {
+        deselecionarTodos();
+    } else {
+        selecionarTodos();
+    }
+});
 
