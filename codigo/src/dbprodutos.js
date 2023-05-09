@@ -54,12 +54,23 @@ var produto5 = {
     estoqueMin: 30
 }
 
-var produtos = [produto1, produto2, produto3, produto4, produto5];
+//Adição de produto de estoque baixo para teste:
+const produto6 = {
+    nome: "Canetas permanentes",
+    id: "12340",
+    categoria: categoria1,
+    nobreza: "nobre",
+    preco: "50.00",
+    disponivel: "50",
+   estoqueMin: 60
+}
+
+var produtos = [produto1, produto2, produto3, produto4, produto5, produto6];
 
 //Adicionando o array no LocalStorage
 //Essa linha abaixo deve ser descomentada apenas se todos os produtos anteriores precisarem ser colocados de novo para teste.
-//Caso precise, dar um clear antes. -> (localStorage.clear())
-//localStorage.setItem("produtos", JSON.stringify(produtos));
+    //Caso precise, dar um clear antes. -> (localStorage.clear())
+    // localStorage.setItem("produtos", JSON.stringify(produtos));
 const dadosProdutos = JSON.parse(localStorage.getItem("produtos"));
 
 
@@ -118,13 +129,21 @@ function adicionarLinhas(produtos){
         const tdDisponivel = document.createElement("td");  
         tdDisponivel.style.height = "110px";
         tdDisponivel.textContent = item.disponivel;
-        tr.appendChild(tdDisponivel);
 
         const tdEstoqueMin = document.createElement("td");  
         tdEstoqueMin.style.height = "110px";
         tdEstoqueMin.textContent = item.estoqueMin;
+
+        //Checa o estoque:
+        if(parseInt(item.disponivel) < parseInt(item.estoqueMin)){
+            tr.classList.add("estoque-baixo");
+            tdDisponivel.style.color = "red";
+        }
+
+        tr.appendChild(tdDisponivel);
         tr.appendChild(tdEstoqueMin);
 
+        
         //Adiciona o tr à tbody da tabela html
         tbody.appendChild(tr);
 
