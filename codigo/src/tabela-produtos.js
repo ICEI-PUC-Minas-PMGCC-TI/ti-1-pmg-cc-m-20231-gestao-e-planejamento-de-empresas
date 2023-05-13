@@ -84,6 +84,10 @@ const btnSelecionarTodos = document.querySelector('#btn-selecionar-todos');
 
 //Função excluir selecionados:
 btnExcluir.addEventListener('click', () => {
+    const confirmacao = confirm('Tem certeza que deseja excluir os produtos selecionados?');
+    if (!confirmacao) {
+        return;
+    }
     //Pega os checkboxes selecionados e os nomes dos produtos selecionados:
     const checkboxes = document.querySelectorAll('input[type=checkbox]');
     const selecionados = Array.from(checkboxes).filter(checkbox => checkbox.checked);
