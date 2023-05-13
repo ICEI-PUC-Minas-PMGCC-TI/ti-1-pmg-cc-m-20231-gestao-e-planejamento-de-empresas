@@ -45,7 +45,8 @@ header {
 .topo-estq {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0 25px;
 }
 
 .titulo-estoque {
@@ -55,8 +56,6 @@ header {
 }
 
 .btn-pesquisa {
-    position: absolute;
-    right: 50px;
     border: none;
     border-radius: 10px;
     background-color: #D9D9D9;
