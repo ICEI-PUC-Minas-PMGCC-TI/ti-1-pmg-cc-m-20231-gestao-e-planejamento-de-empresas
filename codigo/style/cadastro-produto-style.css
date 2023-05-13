@@ -32,15 +32,58 @@ header {
     border: none;
     border-radius: 10px;
     width: 200px;
-    transition: 0.9s;
+    transition: 0.3s;
 }
 
 .btn-entre:hover {
-    background-color: var(--second-bg-color);
+    background-color: #0049b5;
     cursor: pointer;
 }
 
 .btn-entre:active {
     background-color: var(--second-bg-color);
     transition: none;
+}
+
+.btn-salvar{
+    background-color: var(--second-bg-color);
+    padding: 20px 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    transition: 0.3s;
+    float: right;
+}
+
+.btn-salvar:hover {
+    background-color: #0049b5;
+    cursor: pointer;
+}
+
+.btn-salvar:active {
+    background-color: var(--second-bg-color);
+    transition: none;
+}
+
+#Categoria {
+    height: 100%;
+}
+  
+.dropdown-toggle, .dropdown-menu {
+height: 100%;
+}
+
+#categoria-escolhida {
+padding: 0.5rem;
+}
+
+input[type="text"] {
+padding: 0.5rem;
+}
+
+#codigo{
+    float: right;
 }
