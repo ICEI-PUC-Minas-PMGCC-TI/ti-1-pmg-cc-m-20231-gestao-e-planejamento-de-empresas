@@ -68,16 +68,27 @@ header {
     transition: none;
 }
 
-#Categoria {
-    height: 100%;
-}
-  
-.dropdown-toggle, .dropdown-menu {
-height: 100%;
+.btn-voltar{
+    background-color: var(--second-bg-color);
+    padding: 20px 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    transition: 0.3s;
+    float: right;
 }
 
-#categoria-escolhida {
-padding: 0.5rem;
+.btn-voltar:hover {
+    background-color: #0049b5;
+    cursor: pointer;
+}
+
+.btn-voltar:active {
+    background-color: var(--second-bg-color);
+    transition: none;
 }
 
 input[type="text"] {
