@@ -64,7 +64,7 @@ function adicionarLinhas(produtos){
 
 //Pega os dados do LocalStorage e adiciona as linhas usando a função criada anteriormente
 
-const dadosProdutos = JSON.parse(localStorage.getItem("db"));
+
 
 const btnExcluir = document.querySelector('#btn-excluir');
 
@@ -88,20 +88,15 @@ btnExcluir.addEventListener('click', () => {
     if (!confirmacao) {
         return;
     }
-    //Pega os checkboxes selecionados e os nomes dos produtos selecionados:
-    const checkboxes = document.querySelectorAll('input[type=checkbox]');
-    const selecionados = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-    const selecionadosNomes = selecionados.map(selecionado => selecionado.parentElement.parentElement.children[1].textContent);
-    
-    //Array de produtos:
-    const produtos = JSON.parse(localStorage.getItem('db')).produtos;
 
-    //O filter checa se o nome do produto está no array de nomes dos produtos selecionados e retorna um array com os produtos que não estão:
-    const produtosFiltrados = produtos.filter(produto => !selecionadosNomes.includes(produto.nome));
-    
-    //Agora, a database terá apenas os produtos que não foram filtrados
-    const db = {produtos: produtosFiltrados};
+    //Apagar os produtos selecionados, deixando as categorias ainda na db:
+    const produtos = JSON.parse(localStorage.getItem('db')).produtos;
+    const produtosNaoSelecionados = produtos.filter(produto => produto.nome !== produtoSelecionado.nome);
+    const db = JSON.parse(localStorage.getItem('db'));
+    db.produtos = produtosNaoSelecionados;
+    db.categorias = JSON.parse(localStorage.getItem('db')).categorias;
     localStorage.setItem('db', JSON.stringify(db));
+
     window.location.reload();
 });
 
@@ -117,6 +112,8 @@ btnSelecionarTodos.addEventListener('click', () => {
 });
 
 //Pega o json e coloca os produtos em um array de produtos:
+
+const dadosProdutos = JSON.parse(localStorage.getItem("db"));
 
 const produtosArray = dadosProdutos.produtos;
 
