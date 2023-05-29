@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
@@ -27,8 +28,7 @@
             </button></a>
             <h2 class="titulo-estoque">Meu estoque</h2>
             <button class="btn-pesquisa">
-                <span><img class="icon" src="imgs/search.png" alt=""></span>
-                <span><img class="icon" src="imgs/filter.png" alt=""></span>
+                <span><img class="icon" src="imgs/search-icon.png" alt=""></span>
             </button>
         </div>
 
@@ -68,7 +68,35 @@
 
     </main>
 
+    <div class="caixa-pesquisa" id="myModal">
+        <button class="fechar"><span>&times;</span></button>
+        
+        <form action="">
+            <label for="categoria-select">Filtrar por categoria</label>
+            <select class="categoria-select" name="categoria-select" id="">
+            </select>
+            <button class="btn-filtrar-categorias" type="submit">Filtrar</button>
+        </form>
+        <form action="">
 
+            <p>Filtrar por nobreza</p>
+            <div class="nobre">
+                <input type="checkbox" name="nobreza-nobre" id="nobreza-nobre">
+                <label for="nobreza-nobre" value="nobre">Nobre</label>
+            </div>
+            <div class="bruto">
+                <input type="checkbox" name="nobreza-bruto" id="nobreza-bruto">
+                <label for="nobreza-bruto" value="bruto">Bruto</label>
+            </div>
+            
+            <button type="submit">Filtrar</button>
+        </form>
+        <form action="">
+            <label for="search">Busca por nome</label>
+            <input type="text" name="search" id="">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
 
     <footer>
         <p>Desenvolvido por EstoqueMaster.</p>

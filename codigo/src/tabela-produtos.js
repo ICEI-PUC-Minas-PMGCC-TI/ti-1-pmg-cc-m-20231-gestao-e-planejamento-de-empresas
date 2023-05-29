@@ -117,4 +117,78 @@ const dadosProdutos = JSON.parse(localStorage.getItem("db"));
 
 const produtosArray = dadosProdutos.produtos;
 
-adicionarLinhas(produtosArray);
+//Se nenhum parâmetro for passado na url, retorna todos os produtos:
+if (window.location.search === "") {
+    adicionarLinhas(produtosArray);
+}
+
+
+
+
+const btnSearch = document.querySelector(".btn-pesquisa");
+const caixaPesquisa = document.querySelector(".caixa-pesquisa");
+
+
+btnSearch.addEventListener("click", () => {
+    caixaPesquisa.style.display = "flex";
+    const main = document.querySelector("main");
+    main.style.opacity = "0.5";
+});
+
+
+const fechar = document.querySelector(".fechar");
+fechar.addEventListener("click", () => {
+    caixaPesquisa.style.display = "none";
+    const main = document.querySelector("main");
+    main.style.opacity = "1";
+});
+
+//Colocar categorias no select:
+const db = JSON.parse(localStorage.getItem("db")); 
+const categorias = db.categoria;
+const selectCategoria = document.querySelector(".categoria-select");
+categorias.forEach(categoria => {
+    const option = document.createElement("option");
+    option.textContent = categoria.nomeCategoria;
+    option.value = categoria.nomeCategoria;
+    selectCategoria.appendChild(option);
+} );
+
+function filtrarPorCategoria(){
+    //Pegar opcao escolhida no select por meio do parametro da url:
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoriaSelecionada = urlParams.get("categoria-select");
+    const produtos = JSON.parse(localStorage.getItem("db")).produtos;
+    const produtosFiltrados = produtos.filter(produto => produto.categoria == categoriaSelecionada);
+    adicionarLinhas(produtosFiltrados)
+}
+filtrarPorCategoria();
+
+function filtrarPorNobreza(){
+    //Pega o parametro se é nobreza-nobre=on ou nobreza-bruto=on
+    var nobrezaSelecionada;
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.forEach((value, key) => {
+        if (key == "nobreza-nobre" && value == "on") {
+            nobrezaSelecionada = "nobre";
+        } else if (key == "nobreza-bruto" && value == "on") {
+            nobrezaSelecionada = "bruto";
+        }
+    });
+    const produtos = JSON.parse(localStorage.getItem("db")).produtos;
+    const produtosFiltrados = produtos.filter(produto => produto.precificacao == nobrezaSelecionada);
+    adicionarLinhas(produtosFiltrados)
+}
+filtrarPorNobreza();
+
+function buscarPorNome(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const nomeBuscado = urlParams.get("search");
+    console.log(nomeBuscado);
+    const produtos = JSON.parse(localStorage.getItem("db")).produtos;
+    //Não precisa ser o nome igual, mas conter a string, ent fica assim:
+    const produtosFiltrados = produtos.filter(produto => produto.nome.toLowerCase().includes(nomeBuscado.toLowerCase()));
+    console.log(produtosFiltrados);
+    adicionarLinhas(produtosFiltrados)
+}
+buscarPorNome();
