@@ -79,6 +79,7 @@ header {
     width: 200px;
     transition: 0.3s;
     float: right;
+    margin-right: 50px;
 }
 
 .btn-voltar:hover {
