@@ -1,22 +1,44 @@
 var produtoSelecionado;
 
+if (localStorage.getItem("produtosEmFalta") === null) {
+    localStorage.setItem("produtosEmFalta", JSON.stringify([]));
+}
+
+const btnMostrarEmFalta = document.querySelector("#btn-produtos-faltando");
+btnMostrarEmFalta.addEventListener("click", () => {
+    const produtosEmFalta = JSON.parse(localStorage.getItem("produtosEmFalta"));
+    const produtos = JSON.parse(localStorage.getItem("db")).produtos;
+    const produtosFaltando = produtos.filter(produto => produtosEmFalta.includes(produto.nome));
+
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+  
+    adicionarLinhas(produtosFaltando);
+});
+
+
+
 function adicionarLinhas(produtos){
     const tbody = document.querySelector("tbody");
 
     produtos.forEach(item => {
         const tr = document.createElement("tr");
         tr.style.height = "110px";
-
+        
         const tdSelect = document.createElement("td");
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         tdSelect.appendChild(checkbox);
         tr.appendChild(tdSelect);
-
+        
         const tdNome = document.createElement("td")
         tdNome.style.height = "110px";
         tdNome.textContent = item.nome;
         tr.appendChild(tdNome)
+        
+        tdNome.addEventListener("click", () => {
+            window.location.href = `apresentar-produto.html?produto=${item.nome}`;
+        });
 
         const tdCategoria = document.createElement("td");
         tdCategoria.style.height = "110px";
@@ -41,17 +63,20 @@ function adicionarLinhas(produtos){
         tdEstoqueMin.style.height = "110px";
         tdEstoqueMin.textContent = item.estqMin;
 
-        //Checa o estoque:
         if(parseInt(item.estqAtual) < parseInt(item.estqMin)){
             tr.classList.add("estoque-baixo");
             tdDisponivel.style.color = "red";
+            const produtosEmFalta = JSON.parse(localStorage.getItem("produtosEmFalta"));
+
+            if(!produtosEmFalta.includes(item.nome)){
+                produtosEmFalta.push(item.nome);
+            }
+            localStorage.setItem("produtosEmFalta", JSON.stringify(produtosEmFalta));
         }
 
         tr.appendChild(tdDisponivel);
         tr.appendChild(tdEstoqueMin);
 
-        
-        //Adiciona o tr à tbody da tabela html
         tbody.appendChild(tr);
 
         checkbox.addEventListener('change', () => {
@@ -62,13 +87,7 @@ function adicionarLinhas(produtos){
     })
 }
 
-//Pega os dados do LocalStorage e adiciona as linhas usando a função criada anteriormente
-
-
-
 const btnExcluir = document.querySelector('#btn-excluir');
-
-
 
 function selecionarTodos() {
     const checkboxes = document.querySelectorAll('input[type=checkbox]');
@@ -100,7 +119,6 @@ btnExcluir.addEventListener('click', () => {
     window.location.reload();
 });
 
-//Se o botão é clicado uma vez, seleciona todos os checkboxes e se é clicado de novo, deseleciona todos:
 btnSelecionarTodos.addEventListener('click', () => {
     const checkboxes = document.querySelectorAll('input[type=checkbox]');
     const todosSelecionados = Array.from(checkboxes).every(checkbox => checkbox.checked);
@@ -111,17 +129,22 @@ btnSelecionarTodos.addEventListener('click', () => {
     }
 });
 
-//Pega o json e coloca os produtos em um array de produtos:
-
 const dadosProdutos = JSON.parse(localStorage.getItem("db"));
-
 const produtosArray = dadosProdutos.produtos;
 
-//Se nenhum parâmetro for passado na url, retorna todos os produtos:
-if (window.location.search === "") {
+const mostrarTodos = document.querySelector("#btn-todos");
+
+mostrarTodos.addEventListener("click", () => {
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+    adicionarLinhas(produtosArray);
+});
+
+if (window.location.search == "") {
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
     adicionarLinhas(produtosArray);
 }
-
 
 
 
