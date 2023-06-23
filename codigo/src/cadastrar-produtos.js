@@ -1,3 +1,12 @@
+//Carrega o Local Storage ao carregar a página
+window.onload = function() {
+  let objDados = leDados();
+  salvaDados(objDados);
+
+  CategoriaDropdowns(objDados);
+  CategoriaDropdownsModal(objDados);
+}
+
 function leDados() {
   let strDados = localStorage.getItem('db');
   let objDados = {};
@@ -32,7 +41,12 @@ function leDados() {
   }
 
   return objDados;
-}
+}// fim leDados()
+
+//salva os dados no LocalStorage
+function salvaDados (dados) {
+  localStorage.setItem ('db', JSON.stringify (dados));
+}//fim salvaDados()
 
 
 // Configura botão de salvar
@@ -63,11 +77,11 @@ function incluirProduto() {
   });
 
   //tratamento das categorias
-  let select = document.getElementById('seletorCategoria');
+  let select = document.getElementById('labelCategoria');
   let categoriaSelecionada;
 
-  if(select.value == 'Selecione uma categoria:') categoriaSelecionada = 'Sem Categoria';
-  else categoriaSelecionada = select.value;
+  if(select.innerText == '') categoriaSelecionada = 'Sem Categoria';
+  else categoriaSelecionada = select.innerText;
 
   // Verificar se os campos obrigatórios estão preenchidos
   let camposObrigatoriosPreenchidos = true;
@@ -88,7 +102,7 @@ function incluirProduto() {
   }
 
   if (camposObrigatoriosPreenchidos) {
-   
+
     let novoProduto = {
       nome: strNome,
       descricao: strDescricao,
@@ -102,37 +116,82 @@ function incluirProduto() {
       categoria: categoriaSelecionada
   
     };
+
+    console.log(novoProduto);
   
-    if (!objDados.produtos) objDados.produtos = [];
     objDados.produtos.push(novoProduto);
   
     // Salvar os dados no localStorage novamente
     salvaDados(objDados);
   
     alert("Produto cadastrado com sucesso!");
-  
-    //Limpa o formulário
+    
+    /*Limpa o formulário
     document.getElementById("cadastroProduto").reset();
     document.querySelector('.form-check-label').checked = false;
+
+   /*window.location.href = 'produtos.html';*/
+  
   }
 
+}//fim incluirProduto()
+
+/******************************************************************************************************************************************************
+*******************************************************************************************************************************************************
+******************************************************************************************************************************************************/
+
+function CategoriaDropdowns(objDados){
+
+  let label = document.getElementById("labelCategoria");
+  var categorias = objDados.categoria;
+  var menuDropdown = document.getElementById('menuDropdown');
+  menuDropdown.innerHTML = '';
+
+  categorias.forEach(function(categoria) {
+      var li = document.createElement('li');
+      li.className = 'dropdown-item';
+      li.textContent = categoria.nomeCategoria;
+
+      li.addEventListener('click', function() {
+          label.innerText = categoria.nomeCategoria;
+      });
+      menuDropdown.appendChild(li);
+  });
 }
 
-//salva os dados no LocalStorage
-function salvaDados (dados) {
-  localStorage.setItem ('db', JSON.stringify (dados));
-}//fim salvaDados()
+var controleInput;
 
-//Configura o botão
-let btnAddCategoria = document.getElementById ('adicionarCategoria').addEventListener ('click', IncluirCategoria);
+function CategoriaDropdownsModal(objDados){
 
-//Adiciona uma categoria criada pelo usuário ao menu de seleção
-function IncluirCategoria (){
-  // Ler os dados do localStorage
+  var categorias = objDados.categoria;
+  var menuDropdownModal = document.getElementById('menuDropdownModal');
+  menuDropdownModal.innerHTML = '';
+
+  categorias.forEach(function(categoria) {
+      var li = document.createElement('li');
+      li.className = 'dropdown-item';
+      li.textContent = categoria.nomeCategoria;
+
+      li.addEventListener('click', function() {
+          document.getElementById("inputCategoria").value = categoria.nomeCategoria;
+          controleInput = categoria.nomeCategoria;
+
+      });
+      menuDropdownModal.appendChild(li);
+  });
+}
+
+
+//Inclui novas categorias
+let btnAddCategoria = document.getElementById ('btnNovaCategoria').addEventListener('click', IncluirCategoriaNova);
+let btnDeleteCategoria = document.getElementById ('btnExcluirCategoria').addEventListener('click', ExcluirCategoria);
+let btnEditarCategoria = document.getElementById ('btnEditarCategoria').addEventListener('click', EditarCategoria);
+
+function IncluirCategoriaNova() {
+
   let objDados = leDados();
 
-  // Incluir uma nova categoria
-  let strNomeCategoria = document.getElementById ('novaCategoria').value;
+  let strNomeCategoria = document.getElementById ('inputCategoria').value;
 
   let catExiste = false;
   let c = 0;
@@ -146,60 +205,91 @@ function IncluirCategoria (){
   if (catExiste == true) {
       alert ("[ CATEGORIA JÁ EXISTE ]");
       return;
-  }
-  else if(strNomeCategoria === ''){
-      alert(" > NOME INVÁLIDO! <")
-      return;
-  }
 
-  else {
-      let novaCategoria = {
-          nomeCategoria: strNomeCategoria
-      };
+  } else if(strNomeCategoria === '') {
+      alert(" > INFORME UM NOME! <")
+      return;
+
+  } else {
+
+      let novaCategoria = { nomeCategoria: strNomeCategoria };
       objDados.categoria.push(novaCategoria);
       
       // Salvar os dados no localStorage novamente
       salvaDados (objDados);
       
+      CategoriaDropdowns(objDados);
+      CategoriaDropdownsModal(objDados)
+      document.getElementById('inputCategoria').value = "";
 
       alert("Categoria cadastrada com sucesso!");
 
   }
-
-  //Limpa o formulário
-  document.getElementById('novaCategoria').value = 'catapimbas';
-
-  //Adciona a nova categoria ao menu de seleção
-  AddCategoriaMenuSelect(objDados.categoria.length-1);
-
-}//fim Incluir categoria()
+}//fim IncluirCategoriaNova
 
 
-//Adciona as categorias ao menu de seleção
-function AddCategoriaMenuSelect(tam){
-  let select = document.getElementById('seletorCategoria');
+
+function ExcluirCategoria() {
   let objDados = leDados();
-  let categoria = objDados.categoria[tam];
-  let option = document.createElement('option');
+  let strNomeCategoria = document.getElementById('inputCategoria').value; // Supondo que você tenha um elemento select com o ID "categoriaSelecionada"
 
-  option.text = categoria.nomeCategoria;
-  option.value = categoria.nomeCategoria;
-  select.options.add(option);
-}//fim AddCategoriaMenuSelect()
-
-
-//Carrega o Local Storage ao carregar a página
-window.onload = function() {
-  let objDados = leDados();
-  salvaDados(objDados);
-
-  let select = document.getElementById('seletorCategoria');
-
-  //limpa as opções do menu select, deixando somente a "selecione a categoria"
-  select.options.length = 1;
-
-  console.log(objDados)
+  // Encontrar a categoria selecionada e removê-la do array de categorias
   for (let i = 0; i < objDados.categoria.length; i++) {
-      AddCategoriaMenuSelect(i);
+    if (objDados.categoria[i].nomeCategoria === strNomeCategoria) {
+      objDados.categoria.splice(i, 1);
+      break;
+    }
   }
+
+  // Atualizar os dados no localStorage
+  salvaDados(objDados);
+  
+  document.getElementById('inputCategoria').value = "";
+  CategoriaDropdowns(objDados);
+  CategoriaDropdownsModal(objDados);
+
+  alert("Categoria removida com sucesso!");
 }
+
+
+
+function EditarCategoria() {
+  let objDados = leDados();
+  let novoNomeCategoria = document.getElementById('inputCategoria').value;
+  
+  let catExiste = false;
+  let c = 0;
+  let nCatEditar;
+
+  while ((catExiste == false) && (c < objDados.categoria.length)) {
+      if (objDados.categoria[c].nomeCategoria == controleInput) {
+          catExiste = true;
+          nCatEditar = c;
+      }
+      c++;
+      
+  }
+
+  if (catExiste == false) {
+      alert ("[ CATEGORIA NÃO EXISTE ]");
+      return;
+
+  } else if(novoNomeCategoria === '') {
+      alert(" > INFORME UMA CATEGORIA! <");
+      return;
+
+  } else {
+
+      objDados.categoria[nCatEditar].nomeCategoria = novoNomeCategoria;
+      
+      // Salvar os dados no localStorage novamente
+      salvaDados (objDados);
+      
+      CategoriaDropdowns(objDados);
+      CategoriaDropdownsModal(objDados)
+      document.getElementById('inputCategoria').value = "";
+
+      alert("Categoria editada com sucesso!");
+
+  }
+}//fim IncluirCategoriaNova
