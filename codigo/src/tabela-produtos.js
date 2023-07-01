@@ -1,5 +1,44 @@
 var produtoSelecionado;
-
+function leDados() {
+    let strDados = localStorage.getItem('db');
+    let objDados = {};
+    
+    if (strDados) {
+      objDados = JSON.parse(strDados);
+    }
+    else {
+      objDados = {
+        produtos: [
+          {
+            nome: "Cano PVC", descricao: "Cano PVC Tigre tamanho x",
+            estqInicial: "35", estqAtual: "23", estqMin: "10",
+            valorCompra: "8.00", valorVenda: "10.00", precificacao: "bruto",
+            categoria: "construção", codigo: "CON1", categoria: "Construção"
+          },
+          {
+            nome: "Lâmpada LED", descricao: "Lâmpada LED 25W redonda",
+            estqInicial: "50", estqAtual: "28", estqMin: "10",
+            valorCompra: "10.00", valorVenda: "13.00", precificacao: "bruto",
+            categoria: "iluminação", codigo: "ILU1", categoria: "Iluminação"
+          },
+          {
+            nome: "KIT Reparos", descricao: "Martelo, furadeira ...",
+            estqInicial: "5", estqAtual: "3", estqMin: "1",
+            valorCompra: "300.00", valorVenda: "350.00", precificacao: "nobre",
+            categoria: "KIT", codigo: "KIT1", categoria: "Kit"
+          }
+        ],
+        categoria: [{nomeCategoria: "Construção"},{nomeCategoria: "Iluminação"},{nomeCategoria: "Kit"}]
+      }
+    }
+  
+    return objDados;
+  }// fim leDados()
+  
+  //salva os dados no LocalStorage
+  function salvaDados (dados) {
+    localStorage.setItem ('db', JSON.stringify (dados));
+  }//fim salvaDados()
 //Checar se tá logado:
 if (localStorage.getItem("logado") === null || localStorage.getItem("logado") === "false") {
     window.location.href = "login.html";

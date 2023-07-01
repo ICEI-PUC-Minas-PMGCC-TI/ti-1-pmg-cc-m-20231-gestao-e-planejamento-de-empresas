@@ -25,7 +25,9 @@ function registrar(event) {
   
 var btnRegistrar = document.querySelector(".btn-registrar");
 
-btnRegistrar.addEventListener("click", registrar);
+if (btnRegistrar){
+  btnRegistrar.addEventListener("click", registrar);
+}
 
 function login(event) {
   event.preventDefault(); // Evita o comportamento padrão de envio do formulário
@@ -37,8 +39,13 @@ function login(event) {
   // Verificar se as credenciais são válidas
   var usuarios = JSON.parse(localStorage.getItem("usuarios"));
   var usuario = usuarios.find(usuario => usuario.email === email);
-  var storedSenha = usuario.senha;
+  if (usuario === undefined) {
+    alert("Email inválido");
+    return;
+  }
+
   
+  var storedSenha = usuario.senha;
 
   if (storedSenha === senha) {
     alert("Login bem-sucedido");
@@ -52,5 +59,10 @@ function login(event) {
     alert("Credenciais inválidas");
     // Lidar com credenciais inválidas, como exibir uma mensagem de err
   }
+}
+
+var btnEntrar = document.querySelector(".btn-entrar");
+if(btnEntrar){
+  btnEntrar.addEventListener("click", login);
 }
 
