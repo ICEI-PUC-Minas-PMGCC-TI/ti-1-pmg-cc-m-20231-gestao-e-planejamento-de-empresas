@@ -1,3 +1,8 @@
+window.onload = function() {
+    let objDados = leDados();
+    salvaDados(objDados);
+}
+
 var produtoSelecionado;
 function leDados() {
     let strDados = localStorage.getItem('db');

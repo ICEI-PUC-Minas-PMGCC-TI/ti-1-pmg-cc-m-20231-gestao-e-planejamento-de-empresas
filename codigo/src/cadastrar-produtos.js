@@ -132,9 +132,9 @@ function incluirProduto() {
     
     /*Limpa o formulário
     document.getElementById("cadastroProduto").reset();
-    document.querySelector('.form-check-label').checked = false;
+    document.querySelector('.form-check-label').checked = false;*/
 
-   /*window.location.href = 'produtos.html';*/
+   window.location.href = 'produtos.html';
   
   }
 
