@@ -1,5 +1,9 @@
 var produtoSelecionado;
 
+//Checar se tá logado:
+if (localStorage.getItem("logado") === null || localStorage.getItem("logado") === "false") {
+    window.location.href = "login.html";
+}
 if (localStorage.getItem("produtosEmFalta") === null) {
     localStorage.setItem("produtosEmFalta", JSON.stringify([]));
 }
@@ -115,6 +119,11 @@ btnExcluir.addEventListener('click', () => {
     db.produtos = produtosNaoSelecionados;
     db.categorias = JSON.parse(localStorage.getItem('db')).categorias;
     localStorage.setItem('db', JSON.stringify(db));
+
+    //Mesma coisa com os produtos em falta:
+    const produtosEmFalta = JSON.parse(localStorage.getItem("produtosEmFalta"));
+    const produtosEmFaltaNaoSelecionados = produtosEmFalta.filter(produto => produto !== produtoSelecionado.nome);
+    localStorage.setItem("produtosEmFalta", JSON.stringify(produtosEmFaltaNaoSelecionados));
 
     window.location.reload();
 });

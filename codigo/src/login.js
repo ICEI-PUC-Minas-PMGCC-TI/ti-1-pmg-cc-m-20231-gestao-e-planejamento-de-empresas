@@ -1,31 +1,55 @@
+if (localStorage.getItem("usuarios") === null ||  localStorage.getItem("usuarios") === "[]") {
+  localStorage.setItem("usuarios", JSON.stringify([]));
+}
+
+if (localStorage.getItem("logado") === "true") {
+  window.location.href = "produtos.html";
+}
+
 function registrar(event) {
-    event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+  event.preventDefault(); // Evita o comportamento padrão de envio do formulário
 
-    // Obter os valores dos campos de registro
-    var email = document.getElementById("email").value;
-    var senha = document.getElementById("senha").value;
+  var email = document.getElementById("email").value;
+  var senha = document.getElementById("senha").value;
 
-    // Armazenar as informações de registro no localStorage
-    localStorage.setItem(email, senha);
+  var usuario = {
+      email: email,
+      senha: senha,
+  };
 
-    alert("Registro concluído com sucesso");
+  var usuarios = JSON.parse(localStorage.getItem("usuarios"));
+  usuarios.push(usuario);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  alert("Registro concluído com sucesso");
+}
+  
+var btnRegistrar = document.querySelector(".btn-registrar");
+
+btnRegistrar.addEventListener("click", registrar);
+
+function login(event) {
+  event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+
+  // Obter os valores dos campos de entrada de login
+  var email = document.getElementById("loginEmail").value;
+  var senha = document.getElementById("loginSenha").value;
+
+  // Verificar se as credenciais são válidas
+  var usuarios = JSON.parse(localStorage.getItem("usuarios"));
+  var usuario = usuarios.find(usuario => usuario.email === email);
+  var storedSenha = usuario.senha;
+  
+
+  if (storedSenha === senha) {
+    alert("Login bem-sucedido");
+    // Redirecionar para a página de estoqur
+    window.location.href = "produtos.html";
+    //Criar variavel global para o sistema reconhecer que está logado:
+    localStorage.setItem("logado", JSON.stringify(true));
+  } else {
+    localStorage.setItem("logado", JSON.stringify(false));
+    alert("Credenciais inválidas");
+    // Lidar com credenciais inválidas, como exibir uma mensagem de err
   }
+}
 
-  function login(event) {
-    event.preventDefault(); // Evita o comportamento padrão de envio do formulário
-
-    // Obter os valores dos campos de entrada de login
-    var email = document.getElementById("loginEmail").value;
-    var senha = document.getElementById("loginSenha").value;
-
-    // Verificar se as credenciais são válidas
-    var storedSenha = localStorage.getItem(email);
-
-    if (storedSenha === senha) {
-      alert("Login bem-sucedido");
-      // Redirecionar para a página de dashboard ou fazer outra ação desejada
-    } else {
-      alert("Credenciais inválidas");
-      // Lidar com credenciais inválidas, como exibir uma mensagem de erro
-    }
-  }

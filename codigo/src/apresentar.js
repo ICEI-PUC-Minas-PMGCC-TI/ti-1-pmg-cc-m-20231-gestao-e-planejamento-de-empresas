@@ -1,3 +1,7 @@
+if (localStorage.getItem("logado") === null || localStorage.getItem("logado") === "false") {
+  window.location.href = "login.html";
+}
+
 //Pegar parametro nome do produto na url:
 var url_string = window.location.href;
 var url = new URL(url_string);

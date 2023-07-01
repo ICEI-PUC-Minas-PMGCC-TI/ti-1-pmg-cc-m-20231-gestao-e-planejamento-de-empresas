@@ -1,3 +1,7 @@
+if (localStorage.getItem("logado") === null || localStorage.getItem("logado") === "false") {
+  window.location.href = "login.html";
+}
+
 //Carrega o Local Storage ao carregar a página
 window.onload = function() {
   let objDados = leDados();
