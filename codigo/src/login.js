@@ -46,6 +46,7 @@ function login(event) {
     window.location.href = "produtos.html";
     //Criar variavel global para o sistema reconhecer que está logado:
     localStorage.setItem("logado", JSON.stringify(true));
+    localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
   } else {
     localStorage.setItem("logado", JSON.stringify(false));
     alert("Credenciais inválidas");

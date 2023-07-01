@@ -1,44 +1,23 @@
-function leDados () {
-    let strDados = localStorage.getItem('db');
-    let objDados = {};
-  
-    if (strDados) {
-        objDados = JSON.parse (strDados);
-    }
-    else {
-        objDados = { usuario: [ 
-                        {
-                          email: "exemplo@gmail.com", senha: "1234senha"
-                        },
-  
-                    ]}
-    }
-  
-    return objDados;
-  }
-
-//salva os dados no LocalStorage
-function salvaDados (dados) {
-    localStorage.setItem ('db', JSON.stringify (dados));
-}//fim salvaDados()
-
-//Carrega o Local Storage ao carregar a página
-window.onload = function() {
-    let objDados = leDados();
-    salvaDados(objDados);
-    apresentaDados();
+if (localStorage.getItem("logado") === null || localStorage.getItem("logado") === "false") {
+    window.location.href = "login.html";
+} else {
+    var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 }
 
 const campoSenha = document.getElementById('campoSenha');
 const campoEmail = document.getElementById('campoEmail');
 
+//Se os inputs acima conterem disabled, serao tornadas textareas:
+if (campoSenha.disabled == true) {
+    campoSenha.type = "text";
+}
+if (campoEmail.disabled == true) {
+    campoEmail.type = "text";
+}
 ///Apresenta o email e senha nas text areas
-function apresentaDados() {
-    let dados = leDados();
-    
-  
-    document.getElementById('campoEmail').value = dados.usuario[0].email;
-    campoSenha.value = dados.usuario[0].senha;
+function apresentaDados(campoSenha, campoEmail) {
+    campoEmail.value = usuarioLogado.email;
+    campoSenha.value = usuarioLogado.senha;
 
     ///Configura toggle de exibir 
     var btnToggleSenha = document.getElementById("btnToggleSenha");
@@ -49,8 +28,10 @@ function apresentaDados() {
     } else {
         campoSenha.type = "password";
     }
-});
+    });
 };
+
+apresentaDados(campoSenha, campoEmail);
 
 ///Configura botões de editar e salvar
 const btnEditar = document.getElementById("BtnEditar");
@@ -80,14 +61,16 @@ btnSalvar.addEventListener("click", () => {
     campoSenha.disabled = true;
     campoSenha.type = "password";
 
-    let dados = leDados();
+    usuarioLogado.email = campoEmail.value;
+    usuarioLogado.senha = campoSenha.value;
 
-    //leva a edição ao local storage
-    dados.usuario[0].email = campoEmail.value;
-    dados.usuario[0].senha = campoSenha.value;
-
-    salvaDados (dados);
-
+    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
+    let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+    //ecluir o usuario antigo do localstorage e colocar o usuario logado
+    usuarios.splice(usuarios.indexOf(usuarioLogado), 1, usuarioLogado);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    alert("Dados alterados com sucesso!");
+    
 })
 
 
@@ -117,3 +100,9 @@ btnLimpaDadosModal.addEventListener("click", () => {
         localStorage.clear();
     else alert("Senha incorreta!");
 })
+
+var btnLogOut = document.getElementById("btnLogOut");
+btnLogOut.addEventListener("click", () => {
+    localStorage.setItem("logado", JSON.stringify(false));
+    window.location.href = "login.html";
+})  
