@@ -1,6 +1,7 @@
 window.onload = function() {
     let objDados = leDados();
     salvaDados(objDados);
+    console.log(objDados);
 }
 
 var produtoSelecionado;
@@ -22,7 +23,7 @@ function leDados() {
           },
           {
             nome: "Lâmpada LED", descricao: "Lâmpada LED 25W redonda",
-            estqInicial: "50", estqAtual: "28", estqMin: "10",
+            estqInicial: "50", estqAtual: "12", estqMin: "15",
             valorCompra: "10.00", valorVenda: "13.00", precificacao: "bruto",
             categoria: "iluminação", codigo: "ILU1", categoria: "Iluminação"
           },

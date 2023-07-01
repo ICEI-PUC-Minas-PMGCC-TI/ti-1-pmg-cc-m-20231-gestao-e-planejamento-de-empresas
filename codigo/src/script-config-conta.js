@@ -92,17 +92,17 @@ switchNotif.addEventListener("change", function() {
 const btnLimpaDadosModal = document.getElementById("btnLimparDadosModal");
 
 btnLimpaDadosModal.addEventListener("click", () => {
-    let objDados = leDados();
 
     let confirmaSenha = prompt("Informe sua senha para prosseguir: ");
 
-    if(confirmaSenha == objDados.usuario[0].senha)
+    if(confirmaSenha == usuarioLogado.senha)
         localStorage.clear();
     else alert("Senha incorreta!");
+    window.location.href = "index.html";
 })
 
 var btnLogOut = document.getElementById("btnLogOut");
 btnLogOut.addEventListener("click", () => {
     localStorage.setItem("logado", JSON.stringify(false));
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 })  

@@ -26,14 +26,12 @@
 
         <form id="cadastroProduto" action="">
             <div class="row flex mt-4">
-                <div id="foto" class="col-sm-5">
-                    <div class="bg-primary text-white py-1 px-5 rounded-top w-100">Foto</div>
-                    
-                    <div class="bg-info-subtle h-100 text-center align-middle rounded-bottom d-flex flex-column justify-content-center align-items-center">
-                        <label for="formFileLg" class="form-label">Images</label>
-                        <input class="form-control form-control-lg m-4" id="formFileLg" type="file" accept="image/*">
+                <div id="foto" class=" col-sm-5">
+                    <div class="bg-primary text-white py-1 rounded-top w-100 d-flex justify-content-around">
+                        <p>Foto</p>
+                        <button id="btnAddImg" type="button" class="btn btn-primary btn-sm">Adicionar Imagem</button>
                     </div>
-                    
+                    <img id="campoImagem" class="object-fit-contain w-100" src="" alt="Imagem do Produto" height="350px" width="450px">
                 </div>
 
                 <div id="info" class="col">

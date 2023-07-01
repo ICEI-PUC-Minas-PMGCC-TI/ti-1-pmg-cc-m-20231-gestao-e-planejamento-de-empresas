@@ -25,19 +25,22 @@ function leDados() {
           nome: "Cano PVC", descricao: "Cano PVC Tigre tamanho x",
           estqInicial: "35", estqAtual: "23", estqMin: "10",
           valorCompra: "8.00", valorVenda: "10.00", precificacao: "bruto",
-          categoria: "construção", codigo: "CON1", categoria: "Construção"
+          categoria: "construção", codigo: "CON1", categoria: "Construção",
+          imagem: ""
         },
         {
           nome: "Lâmpada LED", descricao: "Lâmpada LED 25W redonda",
           estqInicial: "50", estqAtual: "28", estqMin: "10",
           valorCompra: "10.00", valorVenda: "13.00", precificacao: "bruto",
-          categoria: "iluminação", codigo: "ILU1", categoria: "Iluminação"
+          categoria: "iluminação", codigo: "ILU1", categoria: "Iluminação",
+          imagem: ""
         },
         {
           nome: "KIT Reparos", descricao: "Martelo, furadeira ...",
           estqInicial: "5", estqAtual: "3", estqMin: "1",
           valorCompra: "300.00", valorVenda: "350.00", precificacao: "nobre",
-          categoria: "KIT", codigo: "KIT1", categoria: "Kit"
+          categoria: "KIT", codigo: "KIT1", categoria: "Kit",
+          imagem: ""
         }
       ],
       categoria: [{nomeCategoria: "Construção"},{nomeCategoria: "Iluminação"},{nomeCategoria: "Kit"}]
@@ -52,6 +55,27 @@ function salvaDados (dados) {
   localStorage.setItem ('db', JSON.stringify (dados));
 }//fim salvaDados()
 
+//Tratamento da imagem
+const campoImagem = document.getElementById('campoImagem');
+const btnAddImg = document.getElementById('btnAddImg');
+
+btnAddImg.addEventListener('click', function() {
+  const inputImagem = document.createElement('input');
+  inputImagem.type = 'file';
+  inputImagem.accept = 'image/*';
+  inputImagem.addEventListener('change', function(event) {
+    const arquivo = event.target.files[0];
+    const leitor = new FileReader();
+    leitor.onload = function(e) {
+      campoImagem.src = e.target.result;
+    };
+    leitor.readAsDataURL(arquivo);
+  });
+  inputImagem.click();
+});
+
+
+
 
 // Configura botão de salvar
 document.getElementById('btnsalvar').addEventListener('click', incluirProduto);
@@ -61,6 +85,7 @@ function incluirProduto() {
   let objDados = leDados();
 
   // Incluir um novo produto
+  let imagem = document.getElementById('campoImagem').src;
   let strNome = document.getElementById('campoNome').value;
   let strDescricao = document.getElementById('campoDescricao').value;
   let strEstqInicial = document.getElementById('campoEstq-inicial').value;
@@ -86,6 +111,7 @@ function incluirProduto() {
 
   if(select.innerText == '') categoriaSelecionada = 'Sem Categoria';
   else categoriaSelecionada = select.innerText;
+
 
   // Verificar se os campos obrigatórios estão preenchidos
   let camposObrigatoriosPreenchidos = true;
@@ -117,8 +143,9 @@ function incluirProduto() {
       valorVenda: strValorVenda,
       precificacao: precificacaoEscolhida,
       codigo: strCodigo,
-      categoria: categoriaSelecionada
-  
+      categoria: categoriaSelecionada,
+      imagem: imagem
+      
     };
 
     console.log(novoProduto);

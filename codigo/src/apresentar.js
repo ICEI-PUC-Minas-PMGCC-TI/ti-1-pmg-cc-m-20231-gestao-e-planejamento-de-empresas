@@ -30,6 +30,7 @@ const camposTexto = document.getElementsByTagName('textarea');
 const campoImagem = document.getElementById('campoImagem');
 const botaoEditar = document.getElementById('editar');
 const botaoSalvar = document.getElementById('salvar');
+const btnAddImg = document.getElementById('btnAddImg');
 
 let edicaoHabilitada = false; // Variável para controlar se a edição está habilitada
 
@@ -39,12 +40,12 @@ botaoEditar.addEventListener('click', function() {
   for (let i = 0; i < camposTexto.length; i++) {
     camposTexto[i].disabled = !camposTexto[i].disabled;
   }
-  campoImagem.style.pointerEvents = 'auto'; // Habilita o clique na imagem
-  campoImagem.style.cursor = 'pointer'; // Altera o cursor para indicar que a imagem é clicável
+
   botaoSalvar.disabled = false; // Habilita o botão "Salvar"
+  btnAddImg.hidden = false;
 });
 
-campoImagem.addEventListener('click', function() {
+btnAddImg.addEventListener('click', function() {
   if (edicaoHabilitada && !campoImagem.disabled) {
     const inputImagem = document.createElement('input');
     inputImagem.type = 'file';
@@ -98,6 +99,18 @@ botaoSalvar.addEventListener('click', function() {
   produtos[index] = produtoEditado;
   localStorage.setItem('db', JSON.stringify(db));
   
+  fimEdicao();
   
   alert("Produto editado com sucesso!");
 });
+
+//Desabilita a edição
+function fimEdicao(){
+  edicaoHabilitada = false; // Marca que a edição está desabilitada
+
+  for (let i = 0; i < camposTexto.length; i++) {
+    camposTexto[i].disabled = !camposTexto[i].disabled;
+  }
+  botaoSalvar.disabled = true; // Habilita o botão "Salvar"
+  btnAddImg.hidden = true;
+}

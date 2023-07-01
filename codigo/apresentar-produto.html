@@ -13,7 +13,7 @@
     <header>
         <a href="produtos.html"><img class="logo" src="imgs/logo.png" alt="Logo da EstoqueMaster"></a>
 
-        <button class="btn-entre">Minha conta</button>
+        <a href="config-conta.html"><button class="btn-entre">Minha conta</button></a>
     </header>
 
     <section class="m-4">
@@ -25,9 +25,12 @@
         </div>
 
         <div class="row d-flex mt-4">
-            <div id="foto" class="col-sm-5">
-                <div class="bg-primary text-white py-1 px-5 rounded-top w-100">Foto</div>
-                <img id="campoImagem" src="" alt="Imagem do Produto" height="350px" width="450px">
+            <div id="foto" class=" col-sm-5">
+                <div class="bg-primary text-white py-1 rounded-top w-100 d-flex justify-content-around">
+                    <p>Foto</p>
+                    <button id="btnAddImg" type="button" class="btn btn-primary btn-sm" hidden>Adicionar Imagem</button>
+                </div>
+                <img id="campoImagem" class="object-fit-contain w-100" src="" alt="Imagem do Produto" height="350px" width="450px">
             </div>
 
             <div id="info" class="col">
@@ -106,7 +109,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end align-items-center mt-4">
-                    <button id="voltar" type="button" class="btn btn-secondary btn-lg float-right">Voltar</button>
+                    <a href="produtos.html"><button id="voltar" type="button" class="btn btn-secondary btn-lg float-right">Voltar</button></a>
                     <button id="salvar" type="submit" class="btn btn-primary btn-lg float-right mx-3">Salvar</button>
                 </div>
             </div>            
