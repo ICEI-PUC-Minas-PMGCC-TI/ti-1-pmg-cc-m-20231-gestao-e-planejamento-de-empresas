@@ -91,8 +91,14 @@ function adicionarLinhas(produtos){
 
         const tdCategoria = document.createElement("td");
         tdCategoria.style.height = "110px";
-        tdCategoria.textContent = item.categoria;
-        tr.appendChild(tdCategoria)
+        if(!item.categoria) { //se categoria for uma string vazia
+            tdCategoria.textContent = 'Sem Categoria'
+            tr.appendChild(tdCategoria)
+        } else {
+            tdCategoria.textContent = item.categoria;
+            tr.appendChild(tdCategoria)
+        }
+        
 
         const tdNobreza = document.createElement("td");
         tdNobreza.style.height = "110px";

@@ -206,6 +206,7 @@ function CategoriaDropdownsModal(objDados){
       li.addEventListener('click', function() {
           document.getElementById("inputCategoria").value = categoria.nomeCategoria;
           controleInput = categoria.nomeCategoria;
+          console.log(controleInput)
 
       });
       menuDropdownModal.appendChild(li);
@@ -272,6 +273,8 @@ function ExcluirCategoria() {
     }
   }
 
+  atualizaCategoriasLS("");
+
   // Atualizar os dados no localStorage
   salvaDados(objDados);
   
@@ -280,7 +283,7 @@ function ExcluirCategoria() {
   CategoriaDropdownsModal(objDados);
 
   alert("Categoria removida com sucesso!");
-}
+}//fim ExcluirCategoria
 
 
 
@@ -312,7 +315,7 @@ function EditarCategoria() {
   } else {
 
       objDados.categoria[nCatEditar].nomeCategoria = novoNomeCategoria;
-      
+      atualizaCategoriasLS(novoNomeCategoria);
       // Salvar os dados no localStorage novamente
       salvaDados (objDados);
       
@@ -323,4 +326,16 @@ function EditarCategoria() {
       alert("Categoria editada com sucesso!");
 
   }
-}//fim IncluirCategoriaNova
+}//fim EditarCategoria
+
+
+function atualizaCategoriasLS(CategoriaEditada){
+  let objDados = leDados();
+  objDados.produtos.forEach(function(produto) {
+    // Verifica se a categoria do produto é igual à CategoriaAntiga
+    if (produto.categoria === controleInput) {
+      // Atualiza a categoria para CategoriaEditada
+      produto.categoria = CategoriaEditada;
+    }
+  });
+}

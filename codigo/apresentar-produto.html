@@ -65,16 +65,65 @@
         </div>
 
         <div class="row d-flex mt-4">
-            <div id="Categoria" class="col-sm-5 mt-5 ml-4">
-                <div class="dropdown bg-primary text-white rounded-top w-100">
-                    <button class="btn btn-primary dropdown-toggle w-100 h-100" type="button" aria-expanded="false">
-                      Categorias
-                    </button>
+            <div id="Categoria" class=" col-sm-5 mt-4 flex flex-column">
+                <div class="container">
+                    <div id="adicionarCategoria" class="d-flex flex-column w-100">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h1  class="h4 bold">Categoria escolhida: </h1>
+                            <div class="bg-primary text-white text-center rounded w-25" id="labelCategoria"></div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Ajustes de Categoria</button>
+                        </div>
+                        <div id="visDropdwCat" class="d-none">
+                            <div class="dropdown-center d-flex justify-content-center mt-3">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Selecione uma categoria:
+                                </button>
+                                <ul id="menuDropdown" class="dropdown-menu">
+                                  <li class="dropdown-item pe " >action</li>
+                                  <li class="dropdown-item pe" >Another action</li>
+                                  <li class="dropdown-item pe" >Something else here</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Adicionar Categoria</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="bg-primary text-white border-0 rounded w-100 h-25 d-flex flex-column justify-content-around align-items-center">
+                                        <div class="pt-2 d-flex flex-row justify-content-between align-items-center">
+                                            <label class="me-4" for="inputCategoria">Categoria:</label>
+                                            <input type="text" id="inputCategoria" class="w-auto form-control bg-info-subtle"/>
+                                        </div>
+                                        <div class="pt-1">
+                                            <button type="button" id="btnNovaCategoria" data-bs-dismiss="modal" class="p-1 m-2 rounded text-primary border-0 bg-light">Adicionar</button>
+                                            <button type="button" id="btnEditarCategoria" data-bs-dismiss="modal" class="p-1 m-2 rounded text-white border-0 bg-success">Editar</button>
+                                            <button type="button" id="btnExcluirCategoria" data-bs-dismiss="modal" class="p-1 m-2 rounded text-white border-0 bg-danger">Excluir</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown-center d-flex justify-content-center mt-3">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              Selecione uma categoria:
+                                            </button>
+                                            <ul id="menuDropdownModal" class="dropdown-menu">
+                                              <li class="dropdown-item pe" >action</li>
+                                              <li class="dropdown-item pe" >Another action</li>
+                                              <li class="dropdown-item pe" >Something else here</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p id="campoCategoria" class="bg-info-subtle p-2 w-100 h-100 rounded-bottom"></p>
-
-                <div class="bg-secondary-subtle py-1 px-5 rounded w-100 mt-5 ml-4"> <b>Dica EstoqueMaster:</b> Se possuir uma loja física, organize seus produtos
-                     com a mesma divisão de categorias EstoqueMaster, assim ficará fácil de atualizar o sistema e encontrar os produtos na loja!</div>
+                <div class="bg-secondary-subtle py-1 px-5 rounded w-100 mt-5"> <b>Dica EstoqueMaster:</b> Se possuir uma loja física, organize seus produtos
+                    com a mesma divisão de categorias EstoqueMaster, assim ficará fácil de atualizar o sistema e encontrar os produtos na loja!</div>
             </div>
             
             <div id="valores" class="col">
@@ -110,7 +159,7 @@
                 </div>
                 <div class="d-flex justify-content-end align-items-center mt-4">
                     <a href="produtos.html"><button id="voltar" type="button" class="btn btn-secondary btn-lg float-right">Voltar</button></a>
-                    <button id="salvar" type="submit" class="btn btn-primary btn-lg float-right mx-3">Salvar</button>
+                    <button id="salvar" type="submit" class="btn btn-primary btn-lg float-right mx-3" disabled>Salvar</button>
                 </div>
             </div>            
             
